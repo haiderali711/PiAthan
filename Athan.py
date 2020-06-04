@@ -1,6 +1,10 @@
 import requests
 import json
 from datetime import datetime
+import subprocess
+#import shlex
+#subprocess.call(shlex.split('./test.sh param1 param2'))
+
 
 def fetchTimes():
 	response = requests.get("http://api.aladhan.com/v1/timingsByCity?city=gothenburg&country=sweden&method=2")
@@ -30,4 +34,5 @@ while (1<2):
 		fetchTimes()
 	if (current_time in dailyTimings): 
 		print("turn on the TV and play azan")
+		subprocess.call(['on.sh'])
 
