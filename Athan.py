@@ -2,9 +2,6 @@ import requests
 import json
 from datetime import datetime
 
-now = datetime.now() # current date and time
-current_time = now.strftime("%H:%M")
-
 
 response = requests.get("http://api.aladhan.com/v1/timingsByCity?city=gothenburg&country=sweden&method=2")
 
@@ -15,10 +12,21 @@ asar = jsonData['Asr']
 maghrib = jsonData['Maghrib']
 isha = jsonData['Isha']
 
+dailyTimings = [fajr,duhar,asar,maghrib,isha]
 
 # Print the status code of the response.
 #print(response.status_code)
-print(jsonData)
+print(dailyTimings)
 
-print(current_time)
+for time in dailyTimings:
+	print(time)
+
+
+
+while true: 
+	now = datetime.now() # current date and time
+	current_time = now.strftime("%H:%M")
+
+	if (current_time in dailyTimings): 
+		print("turn on the TV and play azan")  
 
