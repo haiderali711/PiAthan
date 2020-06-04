@@ -9,8 +9,7 @@ RUN apt-get update -y && \
 
 RUN apt-get install -y --no-install-recommends apt-utils python3 python3-pip && \
 	pip3 install --upgrade setuptools && \
-	pip3 install requests && \ 
-	pip3 install playsound && \ 
+	pip3 install requests && \  
 	apt-get install cec-utils -y
 
 
