@@ -54,8 +54,9 @@ while (1<2):
         pygame.mixer.music.load(file)
         pygame.mixer.music.play(1)
         time.sleep(180)
-        if 'standby' in status
+        if 'standby' in status:
             subprocess.run(['./off.sh'])
+            time.sleep(10)
         
 
     print('just looping every 2 secs')
