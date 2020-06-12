@@ -48,10 +48,12 @@
 
     #step 2
     #add the following line before 'exit 0'
-    python3 /home/pi/PiAthan/Athan.py
+    cd /home/pi/PiAthan/
+
+    python3 Athan.py
 
     #step 3 (Close file)
-    cltr + x 
+    cltr x 
 
     #step 4 (Save File)
     press Y to save then Enter to save it to the file name provided
