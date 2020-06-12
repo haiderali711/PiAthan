@@ -14,11 +14,13 @@ def fetchTimes():
     f = open('locationData.txt','r')
     city = f.readline()
     country = f.readline()
-    method = 2
-    apiLink = "http://api.aladhan.com/v1/timingsByCity?city={0}&country={1}&method={2}"
-    apiLink.format(city, country, method)
+    method = f.readline()
+    apiLink = 'http://api.aladhan.com/v1/timingsByCity?city='+city+'&country='+country+'&method='+method
 
-    print city, country, method , apiLink
+    print(f'City : {city}')
+    print(f'Country: {country}')
+    print(f'Method : {method}')
+    print(f'Api Link : {apiLink}')
 
     response = requests.get(apiLink)
     jsonData = response.json()['data']['timings']
