@@ -26,35 +26,8 @@
 
 ## Running the program at startup
 
-1.  Create a new .service file in the systemd directory 
+1. Install the needed Packages
     ```bash
-    sudo nano /lib/systemd/system/athan.service
-    ```
-2.  Write the following in the file and save it
-    ```bash
-    [Unit]
-    Description=Athan Service
-    After=multi-user.target
-
-    [Service]
-    ExecStart=/usr/bin/python3 /home/pi/PiAthan/Athan.py
-
-    [Install]
-    WantedBy=multi-user.target
-    ```
-3.  Save and close the file by choosing ctrl + x, and then y.
-
-4.  Let the Systemmd recognize the Athan service
-    ```bash
-    sudo systemctl daemon-reload
-    ```
-5.  Enable the service to be loaded by Systemmd on Boot
-
-    ```bash
-    sudo systemctl enable athan.service
-    ```
-
-6. ```bash
     #Access the program folder at do the following step by step in the terminal
     cd /home/pi/PiAthan/pre_exec/
 
@@ -62,5 +35,29 @@
 
     ./pre.sh
 
+    #if u are denied the rights, just do 
+    sudo su 
+
+    ./pre.sh
+    ```
+2.  Edit the file rc.local and append the command to start the Program on boot
+
+    ```bash
+    #step 1
+    sudo nano /etc/rc.local
+
+    #step 2
+    #add the following line before 'exit 0'
+    python3 /home/pi/PiAthan/Athan.py
+
+    #step 3 (Close file)
+    cltr + x 
+
+    #step 4 (Save File)
+    press Y to save then Enter to save it to the file name provided
     ```
 
+3.  Reboot ur Raspberry Pi
+    ```bash
+    sudo reboot
+    ```
