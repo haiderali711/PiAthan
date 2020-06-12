@@ -42,13 +42,11 @@ while (1<2):
     #If any time in the daily timing matches the current time do the following things
     if (current_time in dailyTimings): 
         print("turn on the TV and play azan")
-        subprocess.run(['chmod +x status.sh'])
         status = subprocess.run(['./status.sh'],capture_output=True)
         status = status.stdout
         status = status.decode('utf-8')
         print(type(status))
         print(status)
-        subprocess.run(['chmod +x on.sh'])
         subprocess.run(['./on.sh'])
         file = 'normal/1.mp3'
         pygame.init()
@@ -57,7 +55,6 @@ while (1<2):
         pygame.mixer.music.play(1)
         time.sleep(180)
         if 'standby' in status:
-            subprocess.run(['chmod +x off.sh'])
             subprocess.run(['./off.sh'])
             time.sleep(10)
         
