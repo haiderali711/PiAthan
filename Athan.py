@@ -17,6 +17,9 @@ def fetchTimes():
     method = 2
     apiLink = "http://api.aladhan.com/v1/timingsByCity?city={0}&country={1}&method={2}"
     apiLink.format(city, country, method)) 
+
+    print city, country, method , apiLink
+
     response = requests.get(apiLink)
     jsonData = response.json()['data']['timings']
     fajr = jsonData['Fajr']
