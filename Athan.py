@@ -40,7 +40,8 @@ while (1<2):
         time.sleep(50)
 
     #If any time in the daily timing matches the current time do the following things
-    if (current_time in dailyTimings): 
+    if ('22:12' in dailyTimings): 
+#    if (current_time in dailyTimings): 
         print("turn on the TV and play azan")
         status = subprocess.run(['./status.sh'],capture_output=True)
         status = status.stdout
