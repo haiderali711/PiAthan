@@ -8,7 +8,7 @@
 
 1.  Installing **Git** in your Raspberry Pi 
     ```bash
-        sudo apt install git-all
+    sudo apt install git-all
     ```
 2.  Copy the *Copy with SSH* or *Copy with HTTPS* link for this Repository
 
@@ -40,6 +40,19 @@
 
     ./pre.sh
     ```
+
+3.  Make sure that your timezone is correct
+    ```bash
+    #check the time by running the following command 
+    date 
+
+    #if the time is WRONG according to your time follow the following commands
+    sudo raspi-config
+
+    #Choose LOCALISATION OPTIONS
+    #Follow the instructions to change ur timezone to the correct one 
+    ```
+
 2.  Edit the file rc.local and append the command to start the Program on boot
 
     ```bash

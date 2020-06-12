@@ -11,7 +11,13 @@ import pygame
 
 #Contains all the request relating information about the api and the populating of the times in the LIST
 def fetchTimes():
-    response = requests.get("http://api.aladhan.com/v1/timingsByCity?city=gothenburg&country=sweden&method=2")
+    f = open('locationData.txt','r')
+    city = f.readline()
+    country = f.readline()
+    method = 2
+    apiLink = "http://api.aladhan.com/v1/timingsByCity?city={0}&country={1}&method={2}"
+    apiLink.format(city, country, method)) 
+    response = requests.get(apiLink)
     jsonData = response.json()['data']['timings']
     fajr = jsonData['Fajr']
     duhar = jsonData['Dhuhr']
