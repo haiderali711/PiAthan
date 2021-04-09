@@ -4,6 +4,7 @@ from datetime import datetime
 import subprocess
 import time
 import pygame
+import random
 
 #import shlex
 #subprocess.call(shlex.split('./test.sh param1 param2'))
@@ -60,12 +61,24 @@ while (1<2):
         print(type(status))
         print(status)
         subprocess.run(['./on.sh'])
-        file = 'normal/1.mp3'
-        pygame.init()
-        pygame.mixer.init()
-        pygame.mixer.music.load(file)
-        pygame.mixer.music.play(1)
-        time.sleep(180)
+
+        if dailyTimings.index(current_time) is 0:
+            file = 'normal/fajar.mp3'
+            pygame.init()
+            pygame.mixer.init()
+            pygame.mixer.music.load(file)
+            pygame.mixer.music.play(1)
+            time.sleep(250)
+        else:
+            randAzan = random.randint(1, 4)
+            file = 'normal/'+randAzan+'.mp3'
+            pygame.init()
+            pygame.mixer.init()
+            pygame.mixer.music.load(file)
+            pygame.mixer.music.play(1)
+            time.sleep(280)
+
+
         if 'standby' in status:
             subprocess.run(['./off.sh'])
             time.sleep(10)
