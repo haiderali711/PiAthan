@@ -13,16 +13,16 @@ import random
 #Contains all the request relating information about the api and the populating of the times in the LIST
 def fetchTimes():
     f = open('locationData.txt','r')
-    city = f.readline()
-    country = f.readline()
-    method = f.readline()
+    city = f.readline().strip('\n')
+    country = f.readline().strip('\n')
+    method = f.readline().strip('\n')
     apiLink = 'http://api.aladhan.com/v1/timingsByCity?city='+city+'&country='+country+'&method='+method
 
     print(f'City : {city}')
     print(f'Country: {country}')
     print(f'Method : {method}')
     print(f'Api Link : {apiLink}')
-
+    
     response = requests.get(apiLink)
     jsonData = response.json()['data']['timings']
     fajr = jsonData['Fajr']
@@ -52,8 +52,8 @@ while (1<2):
         time.sleep(50)
 
     #If any time in the daily timing matches the current time do the following things
-#    if ('22:12' in dailyTimings): 
     if (current_time in dailyTimings): 
+    #if (current_time in dailyTimings): 
         print("turn on the TV and play azan")
         status = subprocess.run(['./status.sh'],capture_output=True)
         status = status.stdout
@@ -71,7 +71,7 @@ while (1<2):
             time.sleep(250)
         else:
             randAzan = random.randint(1, 4)
-            file = 'normal/'+randAzan+'.mp3'
+            file = 'normal/'+str(randAzan)+'.mp3'
             pygame.init()
             pygame.mixer.init()
             pygame.mixer.music.load(file)
