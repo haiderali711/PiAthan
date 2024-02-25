@@ -62,7 +62,7 @@ while (1<2):
         print(status)
         subprocess.run(['./on.sh'])
 
-        if dailyTimings.index(current_time) is 0:
+        if dailyTimings.index(current_time) == 0:
             file = 'normal/fajar.mp3'
             pygame.init()
             pygame.mixer.init()
